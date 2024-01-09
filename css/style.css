@@ -1,0 +1,88 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+  color: white;
+}
+body {
+  background-color: black;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+}
+nav {
+  padding-top: 20px;
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+nav img {
+  filter: invert(100%);
+  width: 70px;
+  height: 55px;
+  padding: 10px 17px;
+  border-radius: 5px;
+  transition: all 0.2s ease-in-out;
+  transform: rotateY(180deg);
+}
+nav img:hover {
+  background-color: rgba(188, 188, 188, 0.621);
+  cursor: pointer;
+}
+
+.postContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+}
+.post {
+  width: 500px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid grey;
+}
+.topLine {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 20px;
+}
+.topLine img {
+  width: 35px;
+  border-radius: 50%;
+}
+.time {
+  color: rgb(140, 140, 140);
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+}
+.caption {
+  width: 80%;
+}
+.username {
+  font-weight: 600;
+}
+.bottomLine {
+  display: flex;
+  flex-direction: row;
+  padding-left: 10%;
+  padding-top: 20px;
+}
+.bottomLine img {
+  width: 25px;
+  filter: invert(100%);
+  margin-right: 20px;
+}
+
+.bottomLine img:hover {
+  cursor: pointer;
+}
