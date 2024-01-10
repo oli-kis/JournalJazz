@@ -6,7 +6,7 @@
   color: white;
 }
 body {
-  background-color: black;
+  background-color: rgb(23, 22, 22);
   display: flex;
   align-items: center;
   flex-direction: column;

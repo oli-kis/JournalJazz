@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/profile-style.css">
+    <title>Profile Page</title>
+</head>
+<body>
+    <nav>
+        <img src="img/glass.png" alt="magnifying glass" />
+       <a href="blogchain.html"><img src="img/home.png" alt="home" /></a>
+        <a href="profile.html"><img src="img/profile.png" alt="profile" /></a>
+      </nav>
+
+      <div class="profileContainer">
+        <div class="top">
+            <div class="userInfo">
+                <span class="nameOfUser">User</span>
+                <span>Lukas_Der_Checker69</span>
+            </div>
+            <img src="img/profile.png" alt="">
+        </div>
+        <div class="bio">Seventeen Years old | Computer Science</div>
+        <button class="editProfile" id="openPopup">Edit Profile</button>
+        <div class="posts">
+            <h1>Blogs</h1>
+            <div class="post">
+                <div class="topLine">
+                  <img src="img/lukas.png" alt="" />
+                  <span class="username">Lukas_Der_Checker69</span>
+                  <span class="time">15 Std.</span>
+                </div>
+                <div class="content">
+                  <div class="caption">
+                    Hallo meine Freunde dies ist mein erster Post, folgt bitte alle
+                    meinem YT Kanal "Friefighter404"
+                  </div>
+                </div>
+                <div class="bottomLine">
+                  <img src="img/like.png" alt="" id="like" />
+                  <img src="img/comment.png" alt="" />
+                  <img src="img/save.png" alt="" id="save" />
+                </div>
+              </div>
+        </div>
+      </div>
+      <div class="popup" id="popup">
+        <div class="overlay">
+        </div>
+        <div class="popupContent">
+            <h2>Edit Profile</h2>
+            <input type="text" placeholder="Name" value="User" class="nameInput">
+            <input type="text" placeholder="Bio" value="Seventeen Years old | Computer Science" class="bioInput">
+            <div class="controls"><button class="closeBtn">Close</button>
+                <button class="submitBtn">Submit</button></div>
+        </div>
+      </div>
+      <script src="js/popup.js"></script>
+      <script src="js/postInteractions.js"></script>
+</body>
+</html>
