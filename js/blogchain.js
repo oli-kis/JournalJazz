@@ -1,3 +1,5 @@
+import { likePost, savePost } from "./postInteractions.js"
+
 const postContainer = document.getElementById("postContainer");
 
 fetch("URL", {

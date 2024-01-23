@@ -1,4 +1,4 @@
-let jwt = sessionStorage.getitem("token");
+let jwt = sessionStorage.getItem("token");
 
 function likePost(id) {
   let like = document.getElementById(`like${id}`);
@@ -114,4 +114,6 @@ function savePost(id) {
     }
   })
 }
+
+export { likePost, savePost };
 
