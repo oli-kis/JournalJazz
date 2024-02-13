@@ -27,11 +27,36 @@
         </div>
         <div class="bottomLine">
           <img src="img/like.png" alt="" id="like" />
-          <img src="img/comment.png" alt="" />
+          <img src="img/comment.png" alt="" id="openPopup"/>
           <img src="img/save.png" alt="" id="save" />
         </div>
+      </div>      
+    </div>
+
+    <div class="popup" id="popup">
+      <div class="overlay">
+      </div>
+      <div class="popupContent">
+        <div class="commentBox">
+          <div class="comment">
+            <div class="username">Lukas_Der_Checker69</div>
+          <div class="reply">Was ein toller Post</div>
+          </div>
+          <div class="comment">
+            <div class="username">HornyHerrman</div>
+          <div class="reply">Hakuna Matata</div>
+          </div>
+        </div> 
+          <div class="replyBox">
+            <div class="username">samuelematareso</div>
+            <input type="text" placeholder="Reply to Blog...">
+          </div>
+          
+          <div class="controls"><button class="closeBtn">Close</button>
+              <button class="submitBtn">Submit</button></div>
       </div>
     </div>
+    <script src="/js/commentPopup.js"></script>
     <script src="/js/postInteractions.js"></script>
   </body>
 </html>
