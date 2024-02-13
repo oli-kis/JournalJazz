@@ -10,6 +10,7 @@
     <nav>
         <img src="img/glass.png" alt="magnifying glass" />
        <a href="blogchain.html"><img src="img/blogchainSmallLogo.png" alt="home" /></a>
+       <a ><img src="img/create.png" alt="home" id="openCreatePopup"/></a>
         <a href="profile.html"><img src="img/profile.png" alt="profile" /></a>
       </nav>
 
@@ -56,6 +57,15 @@
                 <button class="submitBtn">Submit</button></div>
         </div>
       </div>
+
+      <div class="popup" id="createPopup">
+        <div class="overlay">
+        </div>
+        <div class="popupContent" id="createPopupContent">  
+          <div class="controls"><button class="closeBtn">Close</button></div>  
+        </div>
+      </div>
+      <script src="/js/createPopup.js"></script>
       <script src="js/popup.js"></script>
       <script src="js/postInteractions.js"></script>
 </body>

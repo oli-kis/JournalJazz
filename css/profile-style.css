@@ -165,23 +165,23 @@
     opacity: 0;
     transition: opacity 100ms ease-in-out 200ms;
   }
-
+  
   .popup .popupContent{
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) scale(1.15);
     width: 95%;
-    max-width: 350px;
+    max-width: 450px;
     opacity: 0;
-    background: rgb(0, 0, 0);
+    background: rgb(24,24,24);
     padding: 25px;
     border-radius: 25px;
-    box-shadow: 0px 2px 2px 5px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 1px 1px 2px rgb(56,57,57);
     transition: all 300ms ease-in-out;
-
+  
   }
-
+  
   .popup .popupContent h2{
     margin: 10px 0px;
     font-size: 25px;
@@ -193,6 +193,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    margin-top: 35px;
   }
   .popup .controls .closeBtn{
     width: 100px;
@@ -228,4 +229,39 @@
   .popup.active .popupContent{
     transform: translate(-50%, -50%) scale(1);
     opacity: 1;
+  }
+
+  .selectionBox{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 40px;
+    align-items: center;
+  }
+  .selectionBox img{
+    width: 110px;
+    height: 110px;
+    filter: invert(100%);
+    transition: all 0.2s ease-in-out;
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 10px;
+  }
+  .selectionBox img:hover{
+    background-color: rgba(188, 188, 188, 0.621);
+    cursor: pointer;
+  }
+  .selectionBox div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .createBlogInput{
+    width: 100%;
+    height: 100px;
+    font-size: 16px;
+    padding: 10px;
+    border: 1px solid rgb(56,57,57);
+    border-radius: 10px;
+    background-color: transparent;
   }
