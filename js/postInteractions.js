@@ -6,113 +6,72 @@ function likePost(id) {
   if (like.src == "http://127.0.0.1:5500/img/like.png") {
       like.src = "http://127.0.0.1:5500/img/likedNew.png";
   
-    fetch("URL" + id, {
-      headers: {
-        "content-type": "application/json",
-        credentials: "same-origin",
-      },
-    })
-    .then((response) => response.json())
-    .then(data => {
-
-      let userWhoLiked = data.userliked;
-      userWhoLiked.push(userId);
-
-      fetch("URL" + id, {
-        method: "PUT",
+      fetch(`https://blogchainapi.onrender.com/api/Post/AddLike?postId=${id}`, {
+        method: "PATCH",
         headers: {
-            "content-type": "application/json",
-            credentials: "same-origin",
-        },
-        body: JSON.stringify({
-            userliked: userWhoLiked
-        })
+          "Authorization": jwt,
+          "content-type": "application/json",
+          credentials: "same-origin",
+        }
       })
-    })
+      .then((response) => response.text())
+      .then(data => {
+        console.log(data)
+      })
     } else {
       like.src = "http://127.0.0.1:5500/img/like.png";
 
-      fetch("URL" + id, {
+      fetch(`https://blogchainapi.onrender.com/api/Post/RemoveLike?postId=${id}`, {
+        method: "PATCH",
         headers: {
+          "Authorization": jwt,
           "content-type": "application/json",
           credentials: "same-origin",
-        },
-      })
-      .then((response) => response.json())
-      .then(data => {
-  
-        let userWhoLiked = data.userliked;
-        let userToDislike = userWhoLiked.indexOf(userId);
-
-        if(userToDislike > -1) {
-          userWhoLiked.splice(userToDislike, 1);
         }
-  
-        fetch("URL" + id, {
-          method: "PUT",
-          headers: {
-              "content-type": "application/json",
-              credentials: "same-origin",
-          },
-          body: JSON.stringify({
-              userliked: userWhoLiked
-          })
       })
+      .then((response) => response.text())
+      .then(data => {
+        console.log(data)
       })
-  
     }
 }
 
 function savePost(id) {
   let save = document.getElementById(`save${id}`);
-
-  fetch("URL" + userId, {
-    headers: {
-      "content-type": "application/json",
-      credentials: "same-origin",
-    },
-  })
-  .then((response) => response.json())
-  .then(data => {
-
-    let savedPosts = data.savedPosts;
-    savedPosts.push(id);
+  console.log(id)
 
     if (save.src == "http://127.0.0.1:5500/img/save.png") {
       save.src = "http://127.0.0.1:5500/img/saved.png";
   
-      fetch("URL" + userId, {
-        method: "PUT",
+      fetch(`https://blogchainapi.onrender.com/api/Post/SavePost?postId=${id}`, {
+        method: "PATCH",
         headers: {
+            "Authorization": jwt,
             "content-type": "application/json",
             credentials: "same-origin",
-        },
-        body: JSON.stringify({
-            savedPosts: savedPosts
-        })
+        }
+      })
+      .then((response) => response.text())
+      .then(data => {
+        console.log(data)
       })
   
     } else {
       save.src = "http://127.0.0.1:5500/img/save.png";
 
-      let postToUnsave = savedPosts.indexOf(id);
-
-      if(postToUnsave > -1) {
-        savedPosts.splice(postToUnsave, 1);
-      }
-
-      fetch("URL" + userId, {
-        method: "PUT",
+      fetch(`https://blogchainapi.onrender.com/api/Post/UnsavePost?postId=${id}`, {
+        method: "PATCH",
         headers: {
+            "Authorization": jwt,
             "content-type": "application/json",
             credentials: "same-origin",
-        },
-        body: JSON.stringify({
-            savedPosts: savedPosts
-        })
+        }
+      })
+      .then((response) => response.text())
+      .then(data => {
+        console.log(data)
       })
     }
-  })
 }
 
 export { likePost, savePost };

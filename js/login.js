@@ -15,6 +15,9 @@ let upperCaseCheck = document.getElementById("upperCase");
 let isNumberCheck = document.getElementById("isNumber");
 
 let signUpSubmitBtn = document.getElementById("signUpButton");
+let signInSubmitBtn = document.getElementById("signInButton");
+
+var jwt = sessionStorage.getItem("token");
 
 signUpButton.addEventListener("click", () => {
   signUpContainer.classList.remove("inactive");
@@ -46,6 +49,59 @@ if (signInContainer.classList.contains("inactive")) {
   signUpButton.style.display = "none";
   signInForm.style.display = "none";
   signInContainer.style.borderRadius = "200px 5% 5% 150px";
+}
+
+function register() {
+  let emailInput = document.getElementById("emailInput").value;
+  let usernameInput = document.getElementById("usernameInput").value;
+  
+  fetch("https://blogchainapi.onrender.com/api/User/Register", {
+    method: "POST",
+    headers: {
+      "content-type": "application/json",
+      credentials: "same-origin",
+    },
+    body: JSON.stringify({
+      username: usernameInput,
+      email: emailInput,
+      password: passwordInput.value
+    })
+  })
+
+  signInContainer.classList.remove("inactive");
+  signInForm.style.display = "flex";
+  signInButton.style.display = "none";
+  signUpButton.style.display = "block";
+  signUpForm.style.display = "none";
+  signUpContainer.style.borderRadius = "5% 200px 150px 5%";
+  signUpContainer.classList.add("inactive");
+}
+
+function login() {
+  let usernameInput = document.getElementById("usernameInput").value;
+    
+  fetch("https://blogchainapi.onrender.com/api/User/Login", {
+    method: "POST",
+    headers: {
+      "content-type": "application/json",
+      credentials: "same-origin",
+    },
+    body: JSON.stringify({
+      username: usernameInput,
+      password: passwordInput.value
+    })
+  })
+  .then(response => response.text())
+  .then(data => {
+    console.log(data)
+    if(data == "Username or Password is wrong (╯°□°）╯︵ ┻━┻") {
+      jwt = null;
+    } else {
+      jwt = `Bearer ${data}`;
+      sessionStorage.setItem("token", jwt);
+      window.location.href = "blogchain.html";
+    }
+  })
 }
 
 function checkPassword() {
