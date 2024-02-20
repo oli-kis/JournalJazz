@@ -4,7 +4,7 @@ function createPopup(id){
 
     function bindCloseEvent() {
         let closeButtons = popupNode.querySelectorAll(".closeBtn");
-        closeButtons.forEach(btn => btn.removeEventListener("click", closePopup)); // Remove existing event listeners to prevent duplicates
+        closeButtons.forEach(btn => btn.removeEventListener("click", closePopup));
         closeButtons.forEach(btn => btn.addEventListener("click", closePopup));
     }
 
@@ -36,7 +36,7 @@ function createPopup(id){
             
             reader.readAsDataURL(this.files[0]);
         });
-        bindCloseEvent(); // Rebind close event
+        bindCloseEvent(); 
     }
 
     function openPopup(){
@@ -54,9 +54,9 @@ function createPopup(id){
           </div>
         </div> 
         <div class="controls"><button class="closeBtn">Close</button></div>`;
-        bindCloseEvent(); // Bind close event for initial content
+        bindCloseEvent(); 
 
-        // Make these functions accessible via the global scope or through specific event handlers
+
         window.textSelected = textSelected;
         window.imgSelected = imgSelected;
     }
