@@ -50,7 +50,7 @@ fetch("https://blogchainapi.onrender.com/api/Post/GetAll", {
                     profileImg.alt = "";
                     let username = document.createElement("span");
                     username.classList.add("username");
-                    username.innerHTML = authorData.profileImage;
+                    username.innerHTML = authorData.username;
                     let time = document.createElement("span");
                     time.classList.add("time");
                     time.innerHTML = element.published;

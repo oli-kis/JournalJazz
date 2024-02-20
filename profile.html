@@ -79,9 +79,11 @@
           <h2>Upload a Profile Pic</h2>
           <input type="file" id="imageUpload" accept="image/*">
         <img id="imagePreview" src="" alt="Image preview..." style="display:none; max-width: 100%; height: auto;">
-        <div class="controls"><button class="closeBtn">Close</button><button class="submitBtn">Submit</button></div>
+        <div class="controls"><button class="closeBtn">Close</button><button class="submitBtn" onclick="changeProfilePic()">Submit</button></div>
         </div>
       </div>
+
+      <script src="/js/profile.js"></script>
       <script src="/js/profilePopup.js"></script>
       <script src="/js/createPopup.js"></script>
       <script src="js/popup.js"></script>
