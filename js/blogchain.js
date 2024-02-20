@@ -5,7 +5,7 @@ const postContainer = document.getElementById("postContainer");
 var accountId = "";
 var accountIdSavedPosts = [];
 
-fetch("https://blogchainapi.onrender.com/api/User/Get-Me", {
+await fetch("https://blogchainapi.onrender.com/api/User/Get-Me", {
   headers: {
     "Authorization": jwt,
     "content-type": "application/json",
@@ -16,6 +16,8 @@ fetch("https://blogchainapi.onrender.com/api/User/Get-Me", {
 .then(data => {
     accountId = data.id;
     accountIdSavedPosts.push(data.savedPosts);
+
+    console.log(accountIdSavedPosts);
 })
 
 fetch("https://blogchainapi.onrender.com/api/Post/GetAll", {
@@ -27,6 +29,7 @@ fetch("https://blogchainapi.onrender.com/api/Post/GetAll", {
 .then((response) => response.json())
 .then((json) => {
     json.forEach(element => {
+        console.log(element)
 
         fetch(`https://blogchainapi.onrender.com/api/User/GetProfile?id=${element.authorId}`, {
             headers: {
@@ -44,11 +47,11 @@ fetch("https://blogchainapi.onrender.com/api/Post/GetAll", {
             let topline = document.createElement("div");
             topline.classList.add("topLine");
             let profileImg = document.createElement("img");
-            profileImg.src = authorData.username;
+            profileImg.src = authorData.profileImage;
             profileImg.alt = "";
             let username = document.createElement("span");
             username.classList.add("username");
-            username.innerHTML = authorData.profileImage;
+            username.innerHTML = authorData.username;
             let time = document.createElement("span");
             time.classList.add("time");
             time.innerHTML = element.published;
@@ -70,6 +73,9 @@ fetch("https://blogchainapi.onrender.com/api/Post/GetAll", {
             let bottomline = document.createElement("div");
             bottomline.classList.add("bottomLine");
 
+            console.log(element.likedBy)
+            console.log(accountId)
+
             let likebtn = document.createElement("img");
             if(element.likedBy.includes(accountId)) {
                 likebtn.src = "http://127.0.0.1:5500/img/likedNew.png";
@@ -83,9 +89,19 @@ fetch("https://blogchainapi.onrender.com/api/Post/GetAll", {
             commentbtn.src = "http://127.0.0.1:5500/img/comment.png";
             commentbtn.alt = "";
 
-            console.log(accountIdSavedPosts[0])
+            var isSaved = false;
+
+            for(var i = 0; i < accountIdSavedPosts[0].length; i++) {
+                if(accountIdSavedPosts[0][i].id === element.id) {
+                    isSaved = true;
+                    break;
+                } else {
+                    isSaved = false;
+                }
+            }
+
             let savebtn = document.createElement("img");
-            if(accountIdSavedPosts[0].includes(element.id)) {
+            if(isSaved == true) {
                 savebtn.src = "http://127.0.0.1:5500/img/saved.png";
             } else {
                 savebtn.src = "http://127.0.0.1:5500/img/save.png";
