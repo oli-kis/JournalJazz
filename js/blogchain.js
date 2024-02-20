@@ -15,8 +15,7 @@ fetch("https://blogchainapi.onrender.com/api/User/Get-Me", {
 .then((response) => response.json())
 .then(data => {
     accountId = data.id;
-    accountIdSavedPosts = data.savedPosts;
-    console.log(accountIdSavedPosts)
+    accountIdSavedPosts.push(data.savedPosts);
 })
 
 fetch("https://blogchainapi.onrender.com/api/Post/GetAll", {
