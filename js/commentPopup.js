@@ -1,4 +1,7 @@
-function createPopup(id){
+function createPopup(id, commentBox, controls){
+    let content = document.getElementById("popupContent");
+    content.append(commentBox);
+    content.append(controls);
     let popupNode = document.querySelector(id);
     let overlay = popupNode.querySelector(".overlay");
     let closeBtn = popupNode.querySelector(".closeBtn");
@@ -13,5 +16,4 @@ function createPopup(id){
     return openPopup;
 }
 
-let popup = createPopup("#popup");
-document.querySelector("#openPopup").addEventListener("click", popup)
+//let popup = createPopup("#popup");
