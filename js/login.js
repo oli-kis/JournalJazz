@@ -54,7 +54,7 @@ if (signInContainer.classList.contains("inactive")) {
 function register() {
   let emailInput = document.getElementById("emailInput").value;
   let usernameInput = document.getElementById("usernameInput").value;
-  
+
   fetch("https://blogchainapi.onrender.com/api/User/Register", {
     method: "POST",
     headers: {
@@ -64,9 +64,9 @@ function register() {
     body: JSON.stringify({
       username: usernameInput,
       email: emailInput,
-      password: passwordInput.value
-    })
-  })
+      password: passwordInput.value,
+    }),
+  });
 
   signInContainer.classList.remove("inactive");
   signInForm.style.display = "flex";
@@ -78,8 +78,11 @@ function register() {
 }
 
 function login() {
-  let usernameInput = document.getElementById("usernameInput").value;
-    
+  let usernameInput = document.getElementById("usernameLoginInput").value;
+  let passwordInput = document.getElementById("passwordLoginInput").value;
+
+  console.log("Login:" + usernameInput + passwordInput);
+
   fetch("https://blogchainapi.onrender.com/api/User/Login", {
     method: "POST",
     headers: {
@@ -88,20 +91,20 @@ function login() {
     },
     body: JSON.stringify({
       username: usernameInput,
-      password: passwordInput.value
-    })
+      password: passwordInput,
+    }),
   })
-  .then(response => response.text())
-  .then(data => {
-    console.log(data)
-    if(data == "Username or Password is wrong (╯°□°）╯︵ ┻━┻") {
-      jwt = null;
-    } else {
-      jwt = `Bearer ${data}`;
-      sessionStorage.setItem("token", jwt);
-      window.location.href = "blogchain.html";
-    }
-  })
+    .then((response) => response.text())
+    .then((data) => {
+      console.log(data);
+      if (data == "Username or Password is wrong (╯°□°）╯︵ ┻━┻") {
+        jwt = null;
+      } else {
+        jwt = `Bearer ${data}`;
+        sessionStorage.setItem("token", jwt);
+        window.location.href = "blogchain.html";
+      }
+    });
 }
 
 function checkPassword() {
@@ -111,7 +114,7 @@ function checkPassword() {
   let isLowerCase = false;
   let isNumber = false;
 
-  if(value != "") {
+  if (value != "") {
     signUpForm.style.marginTop = "3.1rem";
     passwordCheck.style.display = "block";
   } else {
@@ -119,24 +122,24 @@ function checkPassword() {
     signUpForm.style.marginTop = "0rem";
   }
 
-  for(let i = 0; i < value.length; i++) {
-    if(value[i] === value[i].toUpperCase() && !isNaN(value[i]) == false) {
+  for (let i = 0; i < value.length; i++) {
+    if (value[i] === value[i].toUpperCase() && !isNaN(value[i]) == false) {
       isUpperCase = true;
     } else {
       signUpSubmitBtn.style.backgroundColor = "rgb(50, 50, 85)";
     }
 
-    if(value[i] === value[i].toLowerCase() && !isNaN(value[i]) == false) {
+    if (value[i] === value[i].toLowerCase() && !isNaN(value[i]) == false) {
       isLowerCase = true;
     } else {
       signUpSubmitBtn.style.backgroundColor = "rgb(50, 50, 85)";
     }
 
-    if(!isNaN(value[i]) == true ) {
+    if (!isNaN(value[i]) == true) {
       isNumber = true;
     }
 
-    if(isUpperCase == true && isLowerCase == true && isNumber == true) {
+    if (isUpperCase == true && isLowerCase == true && isNumber == true) {
       signUpSubmitBtn.style.backgroundColor = "blue";
       signUpSubmitBtn.disabled = false;
     } else {
@@ -145,19 +148,19 @@ function checkPassword() {
     }
   }
 
-  if(isUpperCase == true) {
+  if (isUpperCase == true) {
     upperCaseCheck.style.color = "green";
   } else {
     upperCaseCheck.style.color = "black";
   }
 
-  if(isLowerCase == true) {
+  if (isLowerCase == true) {
     lowerCaseCheck.style.color = "green";
   } else {
     lowerCaseCheck.style.color = "black";
   }
 
-  if(isNumber == true) {
+  if (isNumber == true) {
     isNumberCheck.style.color = "green";
   } else {
     isNumberCheck.style.color = "black";
