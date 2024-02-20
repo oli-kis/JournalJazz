@@ -9,11 +9,13 @@
   <body>
     <nav>
       <img src="img/glass.png" alt="magnifying glass" />
-     <a href="blogchain.html"><img src="img/blogchainSmallLogo.png" alt="home" /></a>
-     <a ><img src="img/create.png" alt="home" id="openCreatePopup"/></a>
+      <a href="blogchain.html"
+        ><img src="img/blogchainSmallLogo.png" alt="home"
+      /></a>
+      <a><img src="img/create.png" alt="home" id="openCreatePopup" /></a>
       <a href="profile.html"><img src="img/profile.png" alt="profile" /></a>
     </nav>
-    <div class="postContainer">
+    <div class="postContainer" id="postContainer">
       <div class="post">
         <div class="topLine">
           <img src="img/lukas.png" alt="" />
@@ -28,44 +30,44 @@
         </div>
         <div class="bottomLine">
           <img src="img/like.png" alt="" id="like" />
-          <img src="img/comment.png" alt="" id="openPopup"/>
+          <img src="img/comment.png" alt="" id="openPopup" />
           <img src="img/save.png" alt="" id="save" />
         </div>
-      </div>      
+      </div>
     </div>
 
     <div class="popup" id="popup">
-      <div class="overlay">
-      </div>
+      <div class="overlay"></div>
       <div class="popupContent">
         <div class="commentBox">
           <div class="comment">
             <div class="username">Lukas_Der_Checker69</div>
-          <div class="reply">Was ein toller Post</div>
+            <div class="reply">Was ein toller Post</div>
           </div>
           <div class="comment">
             <div class="username">HornyHerrman</div>
-          <div class="reply">Hakuna Matata</div>
+            <div class="reply">Hakuna Matata</div>
           </div>
-        </div> 
-          <div class="replyBox">
-            <div class="username">samuelematareso</div>
-            <input type="text" placeholder="Reply to Blog...">
-          </div>
-          
-          <div class="controls"><button class="closeBtn">Close</button>
-              <button class="submitBtn">Submit</button></div>
+        </div>
+        <div class="replyBox">
+          <div class="username">samuelematareso</div>
+          <input type="text" placeholder="Reply to Blog..." />
+        </div>
+
+        <div class="controls">
+          <button class="closeBtn">Close</button>
+          <button class="submitBtn">Submit</button>
+        </div>
       </div>
     </div>
 
     <div class="popup" id="createPopup">
-      <div class="overlay">
-      </div>
-      <div class="popupContent" id="createPopupContent">  
-        <div class="controls"><button class="closeBtn">Close</button></div>  
+      <div class="overlay"></div>
+      <div class="popupContent" id="createPopupContent">
+        <div class="controls"><button class="closeBtn">Close</button></div>
       </div>
     </div>
-    
+
     <script src="/js/createPopup.js"></script>
     <script src="/js/commentPopup.js"></script>
     <script src="/js/postInteractions.js"></script>

@@ -46,10 +46,14 @@ form input {
 h1 {
   margin-bottom: 10px;
 }
+.passwordcheck {
+  align-items: left;
+  display: none;
+}
 form button {
   width: 60%;
   margin-top: 12px;
-  background-color: blue;
+  background-color: rgb(0, 0, 255);
   height: 40px;
   border-radius: 5px;
   color: white;
@@ -58,6 +62,9 @@ form button {
 }
 form button:hover {
   cursor: pointer;
+}
+#signUpButton {
+  background-color: rgb(50, 50, 85);
 }
 .signIn {
   border-radius: 0 5% 5% 0;
