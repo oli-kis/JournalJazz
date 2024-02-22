@@ -71,7 +71,7 @@ function createPopup(id) {
     });
 
     closePopup();
-    // location.reload();
+    location.reload();
   }
 
   function imgSelected() {
