@@ -13,6 +13,11 @@ function createPopup(id) {
     submitBtn.addEventListener("click", CreateBlogText);
   }
 
+  function ButtonEventsCreateImage() {
+    let submitBtn = document.getElementById("image_submitBtn");
+    submitBtn.addEventListener("click", CreateBlogImage);
+  }
+
   function closePopup() {
     popupNode.classList.remove("active");
   }
@@ -45,11 +50,35 @@ function createPopup(id) {
     location.reload();
   }
 
+  async function CreateBlogImage() {
+    let image = document.getElementById("imageUpload");
+    var jwt = sessionStorage.getItem("token");
+    const formData = new FormData();
+
+    if (image.files.length > 0) {
+      const file = image.files[0];
+
+      formData.append("postData", file);
+      console.log(formData);
+    }
+
+    await fetch("https://blogchainapi.onrender.com/api/Post/CreateImagePost", {
+      method: "POST",
+      headers: {
+        Authorization: jwt,
+      },
+      body: formData,
+    });
+
+    closePopup();
+    // location.reload();
+  }
+
   function imgSelected() {
     let content = document.getElementById("createPopupContent");
     content.innerHTML = `<input type="file" id="imageUpload" accept="image/*">
         <img id="imagePreview" src="" alt="Image preview..." style="display:none; max-width: 100%; height: auto;">
-        <div class="controls"><button class="closeBtn">Close</button><button class="submitBtn">Submit</button></div>`;
+        <div class="controls"><button class="closeBtn">Close</button><button id="image_submitBtn" class="submitBtn">Submit</button></div>`;
 
     document
       .getElementById("imageUpload")
@@ -65,6 +94,7 @@ function createPopup(id) {
         reader.readAsDataURL(this.files[0]);
       });
     bindCloseEvent();
+    ButtonEventsCreateImage();
   }
 
   function openPopup() {

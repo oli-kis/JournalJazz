@@ -45,11 +45,11 @@ fetch("https://blogchainapi.onrender.com/api/Post/GetAll", {
           let topline = document.createElement("div");
           topline.classList.add("topLine");
           let profileImg = document.createElement("img");
-          profileImg.src = authorData.profileImage;
+          profileImg.src = "data:image/png;base64," + authorData.profileImage;
           profileImg.alt = "";
           let username = document.createElement("span");
           username.classList.add("username");
-          username.innerHTML = authorData.profileImage;
+          username.innerHTML = authorData.username;
           let time = document.createElement("span");
           time.classList.add("time");
           time.innerHTML = element.published;
@@ -61,11 +61,19 @@ fetch("https://blogchainapi.onrender.com/api/Post/GetAll", {
 
           let content = document.createElement("div");
           content.classList.add("content");
-          let caption = document.createElement("div");
-          caption.classList.add("caption");
-          caption.innerHTML = element.text;
 
-          content.appendChild(caption);
+          if (element.text !== null) {
+            let caption = document.createElement("div");
+            caption.classList.add("caption");
+            caption.innerHTML = element.text;
+            content.appendChild(caption);
+          } else {
+            let image = document.createElement("img");
+            image.classList.add("caption");
+            image.src = "data:image/png;base64," + element.image;
+            content.appendChild(image);
+          }
+
           post.appendChild(content);
 
           let bottomline = document.createElement("div");
