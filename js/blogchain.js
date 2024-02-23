@@ -16,6 +16,9 @@ fetch("https://blogchainapi.onrender.com/api/User/Get-Me", {
   .then((data) => {
     accountId = data.id;
     accountIdSavedPosts.push(data.savedPosts);
+
+    const profileImage = document.getElementById("userImage");
+    profileImage.src = "data:image/png;base64," + data.profileImage;
   });
 
 fetch("https://blogchainapi.onrender.com/api/Post/GetAll", {
