@@ -5,8 +5,7 @@ const postContainer = document.getElementById("postContainer");
 let accountId = "";
 let accountIdSavedPosts = [];
 
-let dateTimeNow = new Date(hours);
-console.log(dateTimeNow)
+let dateTimeNow = new Date();
 
 fetch("https://blogchainapi.onrender.com/api/User/Get-Me", {
   headers: {
@@ -56,9 +55,25 @@ fetch("https://blogchainapi.onrender.com/api/Post/GetAll", {
           let username = document.createElement("span");
           username.classList.add("username");
           username.innerHTML = authorData.username;
+
+          let publishedDate = new Date(element.published);
+
+          let publishedDifference = dateTimeNow - publishedDate;
+          let publishedDifferenceSeconds = publishedDifference/1000;
+          let publishedDifferenceMinutes = publishedDifferenceSeconds/60;
+          let publishedDifferenceHours = publishedDifferenceMinutes/60;
+
+          let publishedFinal;
+          
+          if(publishedDifferenceHours < 1) {
+            publishedFinal = `${Math.round(publishedDifferenceMinutes)} Min. ago`
+          } else {
+            publishedFinal = `${Math.round(publishedDifferenceHours)} Std. ago`
+          }
+
           let time = document.createElement("span");
           time.classList.add("time");
-          time.innerHTML = element.published;
+          time.innerHTML = publishedFinal;
 
           topline.appendChild(profileImg);
           topline.appendChild(username);
