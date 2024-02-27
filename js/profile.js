@@ -312,3 +312,23 @@ async function changeProfilePic() {
     console.log("No image selected");
   }
 }
+
+
+document.addEventListener("DOMContentLoaded", function() {
+  const leftMenu = document.querySelector('.leftMenu');
+  const rightMenu = document.querySelector('.rightMenu');
+
+  function toggleMenu(activeMenu) {
+      leftMenu.classList.remove('activeMenu');
+      rightMenu.classList.remove('activeMenu');
+      activeMenu.classList.add('activeMenu');
+  }
+
+  leftMenu.addEventListener('click', function() {
+      toggleMenu(leftMenu);
+  });
+
+  rightMenu.addEventListener('click', function() {
+      toggleMenu(rightMenu);
+  });
+});

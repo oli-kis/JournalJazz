@@ -98,9 +98,35 @@ nav a:hover {
 .posts h1 {
   font-size: 28px;
   padding-bottom: 10px;
-  border-bottom: 1px solid rgba(104, 104, 104, 0.555);
 }
+.selectionMenu{
+  border-bottom: 1px solid rgba(104, 104, 104, 0.555);
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+.selectionMenu img{
+  width: 40px;
+  filter: invert(100%);
+ padding: 10px 0px;
+}
+.leftMenu, .rightMenu{
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
+}
+.activeMenu{
+  background-color: rgba(188, 188, 188, 0.621);
+  cursor: pointer;
+  border-radius: 10px 10px 0px 0px;
+}
+.leftMenu:hover, .rightMenu:hover{
+  background-color: rgba(188, 188, 188, 0.621);
+  cursor: pointer;
+  border-radius: 10px 10px 0px 0px;
+}
 .post {
   width: 100%;
   padding-bottom: 20px;
