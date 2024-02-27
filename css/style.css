@@ -57,6 +57,9 @@ nav img:hover {
   width: 35px;
   border-radius: 50%;
 }
+#userImage {
+  filter: none;
+}
 .time {
   color: rgb(140, 140, 140);
 }
