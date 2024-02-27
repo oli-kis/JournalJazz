@@ -203,11 +203,11 @@ async function DisplayData() {
         postContainer.appendChild(post);
 
         document.getElementById(`like${element.id}`).onclick = function () {
-          likePost(element.id);
+          LikePost(element.id);
         };
 
         document.getElementById(`save${element.id}`).onclick = function () {
-          savePost(element.id);
+          SavePost(element.id);
         };
       }
     });
