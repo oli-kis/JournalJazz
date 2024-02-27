@@ -5,9 +5,6 @@ const postContainer = document.getElementById("postContainer");
 let accountId = "";
 let accountIdSavedPosts = [];
 
-let dateTimeNow = new Date(hours);
-console.log(dateTimeNow)
-
 fetch("https://blogchainapi.onrender.com/api/User/Get-Me", {
   headers: {
     Authorization: jwt,
@@ -59,6 +56,11 @@ fetch("https://blogchainapi.onrender.com/api/Post/GetAll", {
           let time = document.createElement("span");
           time.classList.add("time");
           time.innerHTML = element.published;
+
+          const likes = document.createElement("p");
+          let heartAmount = element.likedBy.length;
+          likes.textContent = heartAmount;
+          likes.className = "likeamount";
 
           topline.appendChild(profileImg);
           topline.appendChild(username);
@@ -155,14 +157,14 @@ fetch("https://blogchainapi.onrender.com/api/Post/GetAll", {
 
           let isSaved = false;
 
-          for(var i = 0; i < accountIdSavedPosts[0].length; i++) {
-            if(accountIdSavedPosts[0][i].id === element.id) {
-                isSaved = true;
-                break;
+          for (var i = 0; i < accountIdSavedPosts[0].length; i++) {
+            if (accountIdSavedPosts[0][i].id === element.id) {
+              isSaved = true;
+              break;
             } else {
-                isSaved = false;
+              isSaved = false;
             }
-        }
+          }
 
           let savebtn = document.createElement("img");
           if (isSaved == true) {
@@ -173,6 +175,7 @@ fetch("https://blogchainapi.onrender.com/api/Post/GetAll", {
           savebtn.alt = "";
           savebtn.id = `save${element.id}`;
 
+          bottomline.appendChild(likes);
           bottomline.appendChild(likebtn);
           bottomline.appendChild(commentbtn);
           bottomline.appendChild(savebtn);
