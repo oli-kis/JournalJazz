@@ -203,10 +203,12 @@ function DisplayData() {
 
             postContainer.appendChild(post);
 
+            //function for liking a post
             document.getElementById(`like${element.id}`).onclick = function () {
               LikePost(element.id);
             };
 
+            //function for saving a post
             document.getElementById(`save${element.id}`).onclick = function () {
               SavePost(element.id);
             };
