@@ -18,7 +18,23 @@ async function SetProfile() {
   const userImage = document.getElementById("userImage");
   userImage.src = "data:image/png;base64," + userData.profileImage;
 
-  await CreateBlogs(userData.posts, userData);
+  let posts = await GetOwn();
+
+  await CreateBlogs(posts, userData);
+}
+
+async function GetOwn() {
+  let posts = await fetch(
+    `https://blogchainapi.onrender.com/api/Post/GetMyPosts`,
+    {
+      headers: {
+        "content-type": "application/json",
+        credentials: "same-origin",
+        Authorization: jwt,
+      },
+    }
+  ).then((response) => response.json());
+  return posts;
 }
 
 async function CreateBlogs(list, user) {
@@ -70,6 +86,7 @@ async function CreateBlogs(list, user) {
         time.classList.add("time");
         time.innerHTML = publishedFinal;
 
+        console.log(element);
         const likes = document.createElement("p");
         let heartAmount = element.likedBy.length;
         likes.textContent = heartAmount;
