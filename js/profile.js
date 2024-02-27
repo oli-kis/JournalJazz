@@ -1,6 +1,8 @@
-import { likePost, savePost } from "./postInteractions.js";
+import { LikePost, SavePost } from "./postInteractions.js";
 
 var jwt = sessionStorage.getItem("token");
+let dateTimeNow = new Date();
+let publishedFinal;
 SetProfile();
 
 async function SetProfile() {
@@ -39,7 +41,6 @@ async function GetOwn() {
 
 async function CreateBlogs(list, user) {
   const postContainer = document.getElementById("posts");
-  let dateTimeNow = new Date();
   let accountIdSavedPosts = [];
 
   list.forEach((element) => {
@@ -54,10 +55,12 @@ async function CreateBlogs(list, user) {
     )
       .then((response) => response.json())
       .then((authorData) => {
+        //Create a new Post-Box
         let post = document.createElement("div");
         post.classList.add("post");
         post.id = element.id;
 
+        //Create the topline for a Post-Box
         let topline = document.createElement("div");
         topline.classList.add("topLine");
         let profileImg = document.createElement("img");
@@ -67,25 +70,15 @@ async function CreateBlogs(list, user) {
         username.classList.add("username");
         username.innerHTML = authorData.username;
 
-        let publishedDate = new Date(element.published);
-
-        let publishedDifference = dateTimeNow - publishedDate;
-        let publishedDifferenceSeconds = publishedDifference / 1000;
-        let publishedDifferenceMinutes = publishedDifferenceSeconds / 60;
-        let publishedDifferenceHours = publishedDifferenceMinutes / 60;
-
-        let publishedFinal;
-
-        if (publishedDifferenceHours < 1) {
-          publishedFinal = `${Math.round(publishedDifferenceMinutes)} Min. ago`;
-        } else {
-          publishedFinal = `${Math.round(publishedDifferenceHours)} Std. ago`;
-        }
-
+        //Calculate the time-difference between published and now
+        CalculatePublishedDifference(element.published);
+        
         let time = document.createElement("span");
         time.classList.add("time");
         time.innerHTML = publishedFinal;
 
+        //Displays amount of people who liked the post
+        console.log(element);
         const likes = document.createElement("p");
         let heartAmount = element.likedBy.length;
         likes.textContent = heartAmount;
@@ -96,6 +89,7 @@ async function CreateBlogs(list, user) {
         topline.appendChild(time);
         post.appendChild(topline);
 
+        //Displays the content of a post
         let content = document.createElement("div");
         content.classList.add("content");
 
@@ -135,6 +129,7 @@ async function CreateBlogs(list, user) {
           let commentBox = document.createElement("div");
           commentBox.classList.add("commentBox");
           element.comments.forEach((comment) => {
+            console.log(comment);
             let container = document.createElement("div");
             container.classList.add("comment");
             let username = document.createElement("div");
@@ -212,15 +207,39 @@ async function CreateBlogs(list, user) {
 
         postContainer.appendChild(post);
 
+        //function for liking a post
         document.getElementById(`like${element.id}`).onclick = function () {
-          likePost(element.id);
+          LikePost(element.id);
         };
 
+        //function for saving a post
         document.getElementById(`save${element.id}`).onclick = function () {
-          savePost(element.id);
+          SavePost(element.id);
         };
       });
   });
+}
+
+function CalculatePublishedDifference(published) {
+  let publishedDate = new Date(published);
+  
+  let publishedDifference = dateTimeNow - publishedDate;
+  let publishedDifferenceSeconds = publishedDifference/1000;
+  let publishedDifferenceMinutes = publishedDifferenceSeconds/60;
+  let publishedDifferenceHours = publishedDifferenceMinutes/60;
+  let publishedDifferenceDays = publishedDifferenceHours/24;
+  
+  if(publishedDifferenceHours < 1) {
+    publishedFinal = `${Math.floor(publishedDifferenceMinutes)} Min.`
+  }
+
+  if(publishedDifferenceHours >= 24) {
+    publishedFinal = `${Math.floor(publishedDifferenceDays)} Days`
+  }
+  
+  if(publishedDifferenceHours >= 1) {
+    publishedFinal = `${Math.floor(publishedDifferenceHours)} Std.`
+  }
 }
 
 async function sendComment(id) {
@@ -257,6 +276,7 @@ async function UserData() {
     },
   }).then((response) => response.json());
 
+console.log(data);
   return data;
 }
 
@@ -292,3 +312,23 @@ async function changeProfilePic() {
     console.log("No image selected");
   }
 }
+
+
+document.addEventListener("DOMContentLoaded", function() {
+  const leftMenu = document.querySelector('.leftMenu');
+  const rightMenu = document.querySelector('.rightMenu');
+
+  function toggleMenu(activeMenu) {
+      leftMenu.classList.remove('activeMenu');
+      rightMenu.classList.remove('activeMenu');
+      activeMenu.classList.add('activeMenu');
+  }
+
+  leftMenu.addEventListener('click', function() {
+      toggleMenu(leftMenu);
+  });
+
+  rightMenu.addEventListener('click', function() {
+      toggleMenu(rightMenu);
+  });
+});

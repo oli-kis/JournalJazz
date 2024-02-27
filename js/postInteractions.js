@@ -1,6 +1,6 @@
 let jwt = sessionStorage.getItem("token");
 
-function likePost(id) {
+function LikePost(id) {
   let like = document.getElementById(`like${id}`);
 
   if (like.src == "http://127.0.0.1:5500/img/like.png") {
@@ -36,7 +36,7 @@ function likePost(id) {
     }
 }
 
-function savePost(id) {
+function SavePost(id) {
   let save = document.getElementById(`save${id}`);
   console.log(id)
 
@@ -74,5 +74,5 @@ function savePost(id) {
     }
 }
 
-export { likePost, savePost };
+export { LikePost, SavePost };
 
