@@ -1,3 +1,5 @@
+import { likePost, savePost } from "./postInteractions.js";
+
 var jwt = sessionStorage.getItem("token");
 SetProfile();
 
