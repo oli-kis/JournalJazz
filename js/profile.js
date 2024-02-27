@@ -276,7 +276,7 @@ async function UserData() {
     },
   }).then((response) => response.json());
 
-  console.log(data);
+console.log(data);
   return data;
 }
 
