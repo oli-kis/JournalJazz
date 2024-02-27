@@ -5,6 +5,9 @@ const postContainer = document.getElementById("postContainer");
 var accountId = "";
 var accountIdSavedPosts = [];
 
+const currentDate = new Date();
+var currentHour = currentDate.getHours();
+
 await fetch("https://blogchainapi.onrender.com/api/User/Get-Me", {
   headers: {
     "Authorization": jwt,
@@ -40,6 +43,8 @@ fetch("https://blogchainapi.onrender.com/api/Post/GetAll", {
         .then((response) => response.json())
         .then(authorData => {
 
+            var published = currentHour-parseInt(element.published)-1;
+
             let post = document.createElement("div");
             post.classList.add("post");
             post.id = element.id;
@@ -54,7 +59,7 @@ fetch("https://blogchainapi.onrender.com/api/Post/GetAll", {
             username.innerHTML = authorData.username;
             let time = document.createElement("span");
             time.classList.add("time");
-            time.innerHTML = element.published;
+            time.innerHTML = `${published} Std.`;
     
             topline.appendChild(profileImg);
             topline.appendChild(username);
@@ -73,8 +78,6 @@ fetch("https://blogchainapi.onrender.com/api/Post/GetAll", {
             let bottomline = document.createElement("div");
             bottomline.classList.add("bottomLine");
 
-            console.log(element.likedBy)
-            console.log(accountId)
 
             let likebtn = document.createElement("img");
             if(element.likedBy.includes(accountId)) {
