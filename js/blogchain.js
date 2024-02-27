@@ -57,6 +57,11 @@ fetch("https://blogchainapi.onrender.com/api/Post/GetAll", {
           time.classList.add("time");
           time.innerHTML = element.published;
 
+          const likes = document.createElement("p");
+          let heartAmount = element.likedBy.length;
+          likes.textContent = heartAmount;
+          likes.className = "likeamount";
+
           topline.appendChild(profileImg);
           topline.appendChild(username);
           topline.appendChild(time);
@@ -160,6 +165,7 @@ fetch("https://blogchainapi.onrender.com/api/Post/GetAll", {
           savebtn.alt = "";
           savebtn.id = `save${element.id}`;
 
+          bottomline.appendChild(likes);
           bottomline.appendChild(likebtn);
           bottomline.appendChild(commentbtn);
           bottomline.appendChild(savebtn);
