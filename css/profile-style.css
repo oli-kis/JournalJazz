@@ -19,6 +19,14 @@ nav {
   flex-direction: row;
   justify-content: space-between;
 }
+
+#userImage {
+  filter: none;
+}
+
+#profileImage {
+  filter: none;
+}
 nav img {
   filter: invert(100%);
   width: 70px;
