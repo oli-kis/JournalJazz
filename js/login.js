@@ -66,7 +66,11 @@ function register() {
       email: emailInput,
       password: passwordInput.value,
     }),
-  });
+  })
+  .then((response) => response.text())
+  .then((data) => {
+    console.log(data)
+  })
 
   signInContainer.classList.remove("inactive");
   signInForm.style.display = "flex";
