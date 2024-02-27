@@ -117,6 +117,7 @@ async function CreateBlogs(list, user) {
           let commentBox = document.createElement("div");
           commentBox.classList.add("commentBox");
           element.comments.forEach((comment) => {
+            console.log(comment);
             let container = document.createElement("div");
             container.classList.add("comment");
             let username = document.createElement("div");

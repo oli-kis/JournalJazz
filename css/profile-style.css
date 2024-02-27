@@ -325,3 +325,28 @@ nav a:hover {
 .profileImageContainer:hover .profileImage {
   filter: brightness(50%);
 }
+
+/* Comments */
+.commentBox {
+  overflow-y: auto;
+  flex-grow: 1;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  max-height: 20vh;
+}
+
+.comment {
+  margin: 15px 0px;
+  border-bottom: 1px solid grey;
+  padding-bottom: 15px;
+}
+
+.replyBox input {
+  background-color: transparent;
+  box-shadow: none;
+  border: none;
+  font-size: 14px;
+}
+.replyBox input:focus {
+  outline: none;
+}

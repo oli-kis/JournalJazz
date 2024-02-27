@@ -13,5 +13,5 @@ function createPopup(id){
     return openPopup;
 }
 
-/*let popup = createPopup("#popup");
-document.querySelector("#openPopup").addEventListener("click", popup)*/
+let descriptionPopup = createPopup("#descriptionPopup");
+document.querySelector("#openDescriptionPopup").addEventListener("click", descriptionPopup)
