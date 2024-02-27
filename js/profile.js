@@ -86,7 +86,6 @@ async function CreateBlogs(list, user) {
         time.classList.add("time");
         time.innerHTML = publishedFinal;
 
-        console.log(element);
         const likes = document.createElement("p");
         let heartAmount = element.likedBy.length;
         likes.textContent = heartAmount;
@@ -136,7 +135,6 @@ async function CreateBlogs(list, user) {
           let commentBox = document.createElement("div");
           commentBox.classList.add("commentBox");
           element.comments.forEach((comment) => {
-            console.log(comment);
             let container = document.createElement("div");
             container.classList.add("comment");
             let username = document.createElement("div");
@@ -259,7 +257,6 @@ async function UserData() {
     },
   }).then((response) => response.json());
 
-  console.log(data);
   return data;
 }
 

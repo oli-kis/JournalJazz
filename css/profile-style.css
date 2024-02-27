@@ -350,3 +350,11 @@ nav a:hover {
 .replyBox input:focus {
   outline: none;
 }
+
+/* Likes */
+.likeamount {
+  display: flex;
+  align-items: center;
+  margin-right: 5px;
+  font-size: 17px;
+}
