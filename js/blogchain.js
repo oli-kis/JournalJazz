@@ -70,11 +70,11 @@ fetch("https://blogchainapi.onrender.com/api/Post/GetAll", {
             publishedFinal = `${Math.round(publishedDifferenceMinutes)} Min.`
           }
 
-          if(publishedDifferenceHours > 24) {
+          if(publishedDifferenceHours >= 24) {
             publishedFinal = `${Math.round(publishedDifferenceDays)} Days`
           }
           
-          if(publishedDifferenceHours > 1) {
+          if(publishedDifferenceHours >= 1) {
             publishedFinal = `${Math.round(publishedDifferenceHours)} Std.`
           }
 
