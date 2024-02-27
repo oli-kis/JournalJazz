@@ -62,13 +62,20 @@ fetch("https://blogchainapi.onrender.com/api/Post/GetAll", {
           let publishedDifferenceSeconds = publishedDifference/1000;
           let publishedDifferenceMinutes = publishedDifferenceSeconds/60;
           let publishedDifferenceHours = publishedDifferenceMinutes/60;
+          let publishedDifferenceDays = publishedDifferenceHours/24;
 
           let publishedFinal;
           
           if(publishedDifferenceHours < 1) {
-            publishedFinal = `${Math.round(publishedDifferenceMinutes)} Min. ago`
-          } else {
-            publishedFinal = `${Math.round(publishedDifferenceHours)} Std. ago`
+            publishedFinal = `${Math.round(publishedDifferenceMinutes)} Min.`
+          }
+
+          if(publishedDifferenceHours > 24) {
+            publishedFinal = `${Math.round(publishedDifferenceDays)} Days`
+          }
+          
+          if(publishedDifferenceHours > 1) {
+            publishedFinal = `${Math.round(publishedDifferenceHours)} Std.`
           }
 
           let time = document.createElement("span");
