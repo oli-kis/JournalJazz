@@ -8,7 +8,7 @@ async function SetProfile() {
   username.textContent = userData.username;
 
   const bio = document.getElementById("bio");
-  bio.textContent = userData.textContent;
+  bio.textContent = userData.profileDescription;
 
   const profileImage = document.getElementById("profileImage");
   profileImage.src = "data:image/png;base64," + userData.profileImage;
