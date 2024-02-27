@@ -75,6 +75,11 @@ fetch("https://blogchainapi.onrender.com/api/Post/GetAll", {
           time.classList.add("time");
           time.innerHTML = publishedFinal;
 
+          const likes = document.createElement("p");
+          let heartAmount = element.likedBy.length;
+          likes.textContent = heartAmount;
+          likes.className = "likeamount";
+
           topline.appendChild(profileImg);
           topline.appendChild(username);
           topline.appendChild(time);
@@ -170,14 +175,14 @@ fetch("https://blogchainapi.onrender.com/api/Post/GetAll", {
 
           let isSaved = false;
 
-          for(var i = 0; i < accountIdSavedPosts[0].length; i++) {
-            if(accountIdSavedPosts[0][i].id === element.id) {
-                isSaved = true;
-                break;
+          for (var i = 0; i < accountIdSavedPosts[0].length; i++) {
+            if (accountIdSavedPosts[0][i].id === element.id) {
+              isSaved = true;
+              break;
             } else {
-                isSaved = false;
+              isSaved = false;
             }
-        }
+          }
 
           let savebtn = document.createElement("img");
           if (isSaved == true) {
@@ -188,6 +193,7 @@ fetch("https://blogchainapi.onrender.com/api/Post/GetAll", {
           savebtn.alt = "";
           savebtn.id = `save${element.id}`;
 
+          bottomline.appendChild(likes);
           bottomline.appendChild(likebtn);
           bottomline.appendChild(commentbtn);
           bottomline.appendChild(savebtn);

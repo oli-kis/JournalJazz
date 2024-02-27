@@ -21,8 +21,7 @@
     <div class="profileContainer">
       <div class="top">
         <div class="userInfo">
-          <span class="nameOfUser">User</span>
-          <span id="username">Lukas_Der_Checker69</span>
+          <span id="username" class="nameOfUser"></span>
         </div>
         <div class="profileImageContainer">
           <img
@@ -36,8 +35,8 @@
           </div>
         </div>
       </div>
-      <div class="bio" id="bio">Seventeen Years old | Computer Science</div>
-      <button class="editProfile" id="openPopup">Edit Profile</button>
+      <div class="bio" id="bio"></div>
+      <button class="editProfile" id="openPopup">Edit Description</button>
       <div class="posts">
         <h1>Blogs</h1>
         <div class="post">
@@ -63,17 +62,16 @@
     <div class="popup" id="popup">
       <div class="overlay"></div>
       <div class="popupContent">
-        <h2>Edit Profile</h2>
-        <input type="text" placeholder="Name" value="User" class="nameInput" />
+        <h2>Edit Description</h2>
         <input
           type="text"
-          placeholder="Bio"
-          value="Seventeen Years old | Computer Science"
+          placeholder="Enter your Bio here"
           class="bioInput"
+          id="description"
         />
         <div class="controls">
           <button class="closeBtn">Close</button>
-          <button class="submitBtn">Submit</button>
+          <button class="submitBtn" onclick="editDesc()">Submit</button>
         </div>
       </div>
     </div>
@@ -110,5 +108,6 @@
     <script src="/js/createPopup.js"></script>
     <script src="js/popup.js"></script>
     <script src="js/postInteractions.js"></script>
+    <script src="js/description.js"></script>
   </body>
 </html>

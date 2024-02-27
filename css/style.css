@@ -19,12 +19,12 @@ nav {
   flex-direction: row;
   justify-content: space-between;
 }
-nav a{
+nav a {
   border-radius: 5px;
   width: auto;
   transition: all 0.2s ease-in-out;
 }
-.profileNavImg{
+.profileNavImg {
   border-radius: 50%;
 }
 nav img {
@@ -79,6 +79,10 @@ nav a:hover {
 }
 .username {
   font-weight: 600;
+}
+.likeamount {
+  margin-right: 5px;
+  font-size: 20px;
 }
 .bottomLine {
   display: flex;
