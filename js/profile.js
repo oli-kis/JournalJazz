@@ -45,10 +45,13 @@ async function GetOwn() {
 }
 
 async function CreateBlogs(list, user) {
-  const postContainer = document.getElementById("postsContainer");
-
-  list.forEach((element) => {
-    fetch(
+  const postContainer = document.getElementById("posts");
+  let accountIdSavedPosts = [];
+  list = list.reverse();
+  console.log(list);
+  for (let x = 0; x < list.length; x++) {
+    const element = list[x];
+    await fetch(
       `https://blogchainapi.onrender.com/api/User/GetProfile?id=${element.authorId}`,
       {
         headers: {
@@ -76,7 +79,7 @@ async function CreateBlogs(list, user) {
 
         //Calculate the time-difference between published and now
         CalculatePublishedDifference(element.published);
-        
+
         let time = document.createElement("span");
         time.classList.add("time");
         time.innerHTML = publishedFinal;
@@ -418,23 +421,23 @@ function DisplaySavedPosts() {
 
 function CalculatePublishedDifference(published) {
   let publishedDate = new Date(published);
-  
+
   let publishedDifference = dateTimeNow - publishedDate;
-  let publishedDifferenceSeconds = publishedDifference/1000;
-  let publishedDifferenceMinutes = publishedDifferenceSeconds/60;
-  let publishedDifferenceHours = publishedDifferenceMinutes/60;
-  let publishedDifferenceDays = publishedDifferenceHours/24;
-  
-  if(publishedDifferenceHours < 1) {
-    publishedFinal = `${Math.floor(publishedDifferenceMinutes)} Min.`
+  let publishedDifferenceSeconds = publishedDifference / 1000;
+  let publishedDifferenceMinutes = publishedDifferenceSeconds / 60;
+  let publishedDifferenceHours = publishedDifferenceMinutes / 60;
+  let publishedDifferenceDays = publishedDifferenceHours / 24;
+
+  if (publishedDifferenceHours < 1) {
+    publishedFinal = `${Math.floor(publishedDifferenceMinutes)} Min.`;
   }
 
-  if(publishedDifferenceHours >= 24) {
-    publishedFinal = `${Math.floor(publishedDifferenceDays)} Days`
+  if (publishedDifferenceHours >= 24) {
+    publishedFinal = `${Math.floor(publishedDifferenceDays)} Days`;
   }
-  
-  if(publishedDifferenceHours >= 1) {
-    publishedFinal = `${Math.floor(publishedDifferenceHours)} Std.`
+
+  if (publishedDifferenceHours >= 1) {
+    publishedFinal = `${Math.floor(publishedDifferenceHours)} Std.`;
   }
 }
 
@@ -472,7 +475,7 @@ async function UserData() {
     },
   }).then((response) => response.json());
 
-console.log(data);
+  console.log(data);
   return data;
 }
 
@@ -509,15 +512,14 @@ async function changeProfilePic() {
   }
 }
 
-
-document.addEventListener("DOMContentLoaded", function() {
-  const leftMenu = document.querySelector('.leftMenu');
-  const rightMenu = document.querySelector('.rightMenu');
+document.addEventListener("DOMContentLoaded", function () {
+  const leftMenu = document.querySelector(".leftMenu");
+  const rightMenu = document.querySelector(".rightMenu");
 
   function toggleMenu(activeMenu) {
-      leftMenu.classList.remove('activeMenu');
-      rightMenu.classList.remove('activeMenu');
-      activeMenu.classList.add('activeMenu');
+    leftMenu.classList.remove("activeMenu");
+    rightMenu.classList.remove("activeMenu");
+    activeMenu.classList.add("activeMenu");
   }
 
   leftMenu.addEventListener('click', function() {
