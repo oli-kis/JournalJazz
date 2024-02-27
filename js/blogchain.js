@@ -5,9 +5,6 @@ const postContainer = document.getElementById("postContainer");
 let accountId = "";
 let accountIdSavedPosts = [];
 
-let dateTimeNow = new Date(hours);
-console.log(dateTimeNow)
-
 fetch("https://blogchainapi.onrender.com/api/User/Get-Me", {
   headers: {
     Authorization: jwt,
@@ -160,14 +157,14 @@ fetch("https://blogchainapi.onrender.com/api/Post/GetAll", {
 
           let isSaved = false;
 
-          for(var i = 0; i < accountIdSavedPosts[0].length; i++) {
-            if(accountIdSavedPosts[0][i].id === element.id) {
-                isSaved = true;
-                break;
+          for (var i = 0; i < accountIdSavedPosts[0].length; i++) {
+            if (accountIdSavedPosts[0][i].id === element.id) {
+              isSaved = true;
+              break;
             } else {
-                isSaved = false;
+              isSaved = false;
             }
-        }
+          }
 
           let savebtn = document.createElement("img");
           if (isSaved == true) {
