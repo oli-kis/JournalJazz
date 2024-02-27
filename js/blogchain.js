@@ -1,9 +1,12 @@
 import { likePost, savePost } from "./postInteractions.js";
 
-var jwt = sessionStorage.getItem("token");
+let jwt = sessionStorage.getItem("token");
 const postContainer = document.getElementById("postContainer");
-var accountId = "";
-var accountIdSavedPosts = [];
+let accountId = "";
+let accountIdSavedPosts = [];
+
+let dateTimeNow = new Date(hours);
+console.log(dateTimeNow)
 
 fetch("https://blogchainapi.onrender.com/api/User/Get-Me", {
   headers: {
@@ -155,9 +158,19 @@ fetch("https://blogchainapi.onrender.com/api/Post/GetAll", {
             openPopup();
           });
 
-          console.log(accountIdSavedPosts[0]);
+          let isSaved = false;
+
+          for(var i = 0; i < accountIdSavedPosts[0].length; i++) {
+            if(accountIdSavedPosts[0][i].id === element.id) {
+                isSaved = true;
+                break;
+            } else {
+                isSaved = false;
+            }
+        }
+
           let savebtn = document.createElement("img");
-          if (accountIdSavedPosts.includes(element.id)) {
+          if (isSaved == true) {
             savebtn.src = "http://127.0.0.1:5500/img/saved.png";
           } else {
             savebtn.src = "http://127.0.0.1:5500/img/save.png";
