@@ -27,13 +27,17 @@ nav {
 #profileImage {
   filter: none;
 }
-nav a{
+nav a {
   border-radius: 5px;
   width: auto;
   transition: all 0.2s ease-in-out;
 }
-.profileNavImg{
+.profileNavImg {
   border-radius: 50%;
+}
+.likeamount {
+  margin-right: 5px;
+  font-size: 20px;
 }
 nav img {
   filter: invert(100%);
@@ -286,7 +290,7 @@ nav a:hover {
   height: 60px;
   display: inline-block;
 }
-.profileImageContainer img{
+.profileImageContainer img {
   height: 60px;
 }
 .profileImageContainer:hover {
