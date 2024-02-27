@@ -1,4 +1,4 @@
-import { likePost, savePost } from "./postInteractions.js";
+import { LikePost, SavePost } from "./postInteractions.js";
 
 let jwt = sessionStorage.getItem("token");
 const postContainer = document.getElementById("postContainer");
@@ -50,10 +50,12 @@ function DisplayData() {
           )
             .then((response) => response.json())
             .then((authorData) => {
+              //Create a new Post-Box
               let post = document.createElement("div");
               post.classList.add("post");
               post.id = element.id;
     
+              //Create the topline for a Post-Box
               let topline = document.createElement("div");
               topline.classList.add("topLine");
               let profileImg = document.createElement("img");
@@ -63,12 +65,14 @@ function DisplayData() {
               username.classList.add("username");
               username.innerHTML = authorData.username;
 
+              //Calculate the time-difference between published and now
               CalculatePublishedDifference(element.published);
     
               let time = document.createElement("span");
               time.classList.add("time");
               time.innerHTML = publishedFinal;
-    
+              
+              //Displays amount of people who liked the post
               const likes = document.createElement("p");
               let heartAmount = element.likedBy.length;
               likes.textContent = heartAmount;
@@ -78,7 +82,8 @@ function DisplayData() {
               topline.appendChild(username);
               topline.appendChild(time);
               post.appendChild(topline);
-    
+
+              //Displays the content of a post
               let content = document.createElement("div");
               content.classList.add("content");
     
@@ -195,12 +200,14 @@ function DisplayData() {
     
               postContainer.appendChild(post);
     
+              //function for liking a post
               document.getElementById(`like${element.id}`).onclick = function () {
-                likePost(element.id);
+                LikePost(element.id);
               };
     
+              //function for saving a post
               document.getElementById(`save${element.id}`).onclick = function () {
-                savePost(element.id);
+                SavePost(element.id);
               };
             });
         });

@@ -51,7 +51,7 @@ if (signInContainer.classList.contains("inactive")) {
   signInContainer.style.borderRadius = "200px 5% 5% 150px";
 }
 
-function register() {
+function Register() {
   let emailInput = document.getElementById("emailInput").value;
   let usernameInput = document.getElementById("usernameInput").value;
 
@@ -81,7 +81,7 @@ function register() {
   signUpContainer.classList.add("inactive");
 }
 
-function login() {
+function Login() {
   let usernameInput = document.getElementById("usernameLoginInput").value;
   let passwordInput = document.getElementById("passwordLoginInput").value;
 
@@ -111,7 +111,7 @@ function login() {
     });
 }
 
-function checkPassword() {
+function CheckPassword() {
   let value = passwordInput.value;
 
   let isUpperCase = false;
