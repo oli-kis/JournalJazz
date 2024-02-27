@@ -45,7 +45,7 @@ async function GetOwn() {
 }
 
 async function CreateBlogs(list, user) {
-  const postContainer = document.getElementById("posts");
+  const postContainer = document.getElementById("postsContainer");
   list = list.reverse();
   console.log(list);
   for (let x = 0; x < list.length; x++) {
@@ -227,7 +227,7 @@ async function CreateBlogs(list, user) {
 }
 
 function DisplaySavedPosts() {
-  const postContainer = document.getElementById("posts");
+  const postContainer = document.getElementById("postsContainer");
 
   fetch("https://blogchainapi.onrender.com/api/Post/GetAll", {
     headers: {
