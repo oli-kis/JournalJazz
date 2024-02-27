@@ -5,6 +5,8 @@ const postContainer = document.getElementById("postContainer");
 let accountId = "";
 let accountIdSavedPosts = [];
 
+let dateTimeNow = new Date();
+
 fetch("https://blogchainapi.onrender.com/api/User/Get-Me", {
   headers: {
     Authorization: jwt,
@@ -53,9 +55,32 @@ fetch("https://blogchainapi.onrender.com/api/Post/GetAll", {
           let username = document.createElement("span");
           username.classList.add("username");
           username.innerHTML = authorData.username;
+
+          let publishedDate = new Date(element.published);
+
+          let publishedDifference = dateTimeNow - publishedDate;
+          let publishedDifferenceSeconds = publishedDifference/1000;
+          let publishedDifferenceMinutes = publishedDifferenceSeconds/60;
+          let publishedDifferenceHours = publishedDifferenceMinutes/60;
+          let publishedDifferenceDays = publishedDifferenceHours/24;
+
+          let publishedFinal;
+          
+          if(publishedDifferenceHours < 1) {
+            publishedFinal = `${Math.round(publishedDifferenceMinutes)} Min.`
+          }
+
+          if(publishedDifferenceHours > 24) {
+            publishedFinal = `${Math.round(publishedDifferenceDays)} Days`
+          }
+          
+          if(publishedDifferenceHours > 1) {
+            publishedFinal = `${Math.round(publishedDifferenceHours)} Std.`
+          }
+
           let time = document.createElement("span");
           time.classList.add("time");
-          time.innerHTML = element.published;
+          time.innerHTML = publishedFinal;
 
           const likes = document.createElement("p");
           let heartAmount = element.likedBy.length;
