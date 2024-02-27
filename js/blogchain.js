@@ -9,7 +9,7 @@ let dateTimeNow = new Date();
 let publishedFinal;
 
 GetUser();
-DisplayData();
+DisplayPosts();
 
 function GetUser() {
   fetch("https://blogchainapi.onrender.com/api/User/Get-Me", {
@@ -29,7 +29,7 @@ function GetUser() {
     });
 }
 
-function DisplayData() {
+function DisplayPosts() {
   fetch("https://blogchainapi.onrender.com/api/Post/GetAll", {
     headers: {
       "content-type": "application/json",
