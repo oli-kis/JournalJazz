@@ -46,7 +46,6 @@ async function GetOwn() {
 
 async function CreateBlogs(list, user) {
   const postContainer = document.getElementById("posts");
-  let accountIdSavedPosts = [];
   list = list.reverse();
   console.log(list);
   for (let x = 0; x < list.length; x++) {
@@ -224,7 +223,7 @@ async function CreateBlogs(list, user) {
           SavePost(element.id);
         };
       });
-  });
+  };
 }
 
 function DisplaySavedPosts() {

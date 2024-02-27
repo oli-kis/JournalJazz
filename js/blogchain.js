@@ -42,7 +42,7 @@ async function GetAuthorData(id) {
   return authorData;
 }
 
-async function DisplayData() {
+async function DisplayPosts() {
   await fetch("https://blogchainapi.onrender.com/api/Post/GetAll", {
     headers: {
       "content-type": "application/json",
