@@ -81,8 +81,10 @@ nav a:hover {
   font-weight: 600;
 }
 .likeamount {
+  display: flex;
+  align-items: center;
   margin-right: 5px;
-  font-size: 20px;
+  font-size: 17px;
 }
 .bottomLine {
   display: flex;
