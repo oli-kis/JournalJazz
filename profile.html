@@ -14,7 +14,11 @@
       /></a>
       <a><img src="img/create.png" alt="home" id="openCreatePopup" /></a>
       <a href="profile.html"
-        ><img src="img/profile.png" id="userImage" alt="profile" class="profileNavImg"
+        ><img
+          src="img/profile.png"
+          id="userImage"
+          alt="profile"
+          class="profileNavImg"
       /></a>
     </nav>
 
@@ -37,7 +41,7 @@
       </div>
       <div class="bio" id="bio"></div>
       <button class="editProfile" id="openPopup">Edit Description</button>
-      <div class="posts">
+      <div class="posts" id="posts">
         <h1>Blogs</h1>
         <div class="post">
           <div class="topLine">
@@ -102,6 +106,42 @@
         </div>
       </div>
     </div>
+
+    <div class="popup" id="popup">
+      <div class="overlay"></div>
+      <div class="popupContent" id="popupContent">
+        <div class="commentBox">
+          <div class="comment">
+            <div class="username">Lukas_Der_Checker69</div>
+            <div class="reply">Was ein toller Post</div>
+          </div>
+          <div class="comment">
+            <div class="username">HornyHerrman</div>
+            <div class="reply">Hakuna Matata</div>
+          </div>
+        </div>
+        <div class="replyBox">
+          <div class="username">samuelematareso</div>
+          <input type="text" placeholder="Reply to Blog..." />
+        </div>
+
+        <div class="controls">
+          <button class="closeBtn">Close</button>
+          <button class="submitBtn">Submit</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="popup" id="createPopup">
+      <div class="overlay"></div>
+      <div class="popupContent" id="createPopupContent">
+        <div class="controls"><button class="closeBtn">Close</button></div>
+      </div>
+    </div>
+
+    <script type="module" src="/js/postInteractions.js"></script>
+    <script type="module" src="/js/blogchain.js"></script>
+    <script src="/js/commentPopup.js"></script>
 
     <script src="/js/profile.js"></script>
     <script src="/js/profilePopup.js"></script>
