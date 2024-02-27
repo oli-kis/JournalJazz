@@ -1,4 +1,4 @@
-import { likePost, savePost } from "./postInteractions.js";
+import { LikePost, SavePost } from "./postInteractions.js";
 
 var jwt = sessionStorage.getItem("token");
 let dateTimeNow = new Date();
@@ -209,12 +209,12 @@ async function CreateBlogs(list, user) {
 
         //function for liking a post
         document.getElementById(`like${element.id}`).onclick = function () {
-          likePost(element.id);
+          LikePost(element.id);
         };
 
         //function for saving a post
         document.getElementById(`save${element.id}`).onclick = function () {
-          savePost(element.id);
+          SavePost(element.id);
         };
       });
   });
