@@ -27,17 +27,22 @@ nav {
 #profileImage {
   filter: none;
 }
-nav img {
-  filter: invert(100%);
-  width: 70px;
-  height: 55px;
-  padding: 10px 17px;
+nav a{
   border-radius: 5px;
+  width: auto;
   transition: all 0.2s ease-in-out;
-  transform: rotateY(180deg);
+}
+.profileNavImg{
   border-radius: 50%;
 }
-nav img:hover {
+nav img {
+  filter: invert(100%);
+  width: 80px;
+  height: 65px;
+  padding: 10px 18px;
+  transform: rotateY(180deg);
+}
+nav a:hover {
   background-color: rgba(188, 188, 188, 0.621);
   cursor: pointer;
 }
