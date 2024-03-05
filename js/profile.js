@@ -211,8 +211,8 @@ async function CreateBlogs(list, user) {
         bottomline.appendChild(savebtn);
         post.appendChild(bottomline);
 
-        postContainer.appendChild(post)
-        
+        postContainer.appendChild(post);
+
         //function for liking a post
         document.getElementById(`like${element.id}`).onclick = function () {
           LikePost(element.id);
@@ -223,7 +223,7 @@ async function CreateBlogs(list, user) {
           SavePost(element.id);
         };
       });
-  };
+  }
 }
 
 function DisplaySavedPosts() {
@@ -400,7 +400,7 @@ function DisplaySavedPosts() {
             bottomline.appendChild(savebtn);
             post.appendChild(bottomline);
 
-            if(isSaved == true) {
+            if (isSaved == true) {
               postContainer.appendChild(post);
             }
 
@@ -478,39 +478,6 @@ async function UserData() {
   return data;
 }
 
-async function changeProfilePic() {
-  const input = document.getElementById("imageUpload");
-  if (input.files.length > 0) {
-    const file = input.files[0];
-    const formData = new FormData();
-    formData.append("newImage", file);
-
-    try {
-      const response = await fetch(
-        "https://blogchainapi.onrender.com/api/User/ChangeProfilePic",
-        {
-          method: "PATCH",
-          headers: {
-            Authorization: jwt,
-          },
-          body: formData,
-        }
-      );
-
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-
-      console.log("Image uploaded successfully");
-      window.location.reload();
-    } catch (error) {
-      console.error("Error uploading image:", error);
-    }
-  } else {
-    console.log("No image selected");
-  }
-}
-
 document.addEventListener("DOMContentLoaded", function () {
   const leftMenu = document.querySelector(".leftMenu");
   const rightMenu = document.querySelector(".rightMenu");
@@ -521,14 +488,14 @@ document.addEventListener("DOMContentLoaded", function () {
     activeMenu.classList.add("activeMenu");
   }
 
-  leftMenu.addEventListener('click', function() {
-      toggleMenu(leftMenu);
-      location.reload();
+  leftMenu.addEventListener("click", function () {
+    toggleMenu(leftMenu);
+    location.reload();
   });
 
-  rightMenu.addEventListener('click', function() {
-      toggleMenu(rightMenu);
-      document.getElementById("postsContainer").innerHTML = "";
-      DisplaySavedPosts();
+  rightMenu.addEventListener("click", function () {
+    toggleMenu(rightMenu);
+    document.getElementById("postsContainer").innerHTML = "";
+    DisplaySavedPosts();
   });
 });

@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/profile-style.css" />
+    <link rel="icon" type="image/x-icon" href="/img/favicon.ico" />
     <title>Profile Page</title>
   </head>
   <body>
@@ -56,6 +57,8 @@
       </div>
       <div class="posts" id="postsContainer"></div>
     </div>
+
+    <!--Popup to change Profile Description-->
     <div class="popup" id="descriptionPopup">
       <div class="overlay"></div>
       <div class="popupContent">
@@ -73,6 +76,7 @@
       </div>
     </div>
 
+    <!--Popup to create a Post-->
     <div class="popup" id="createPopup">
       <div class="overlay"></div>
       <div class="popupContent" id="createPopupContent">
@@ -80,6 +84,7 @@
       </div>
     </div>
 
+    <!--Popup to change Profile Picture-->
     <div class="popup" id="profilePoppup">
       <div class="overlay"></div>
       <div class="popupContent" id="createProfilePoppup">
@@ -100,43 +105,17 @@
       </div>
     </div>
 
+    <!--Popup to create a Comment-->
     <div class="popup" id="popup">
       <div class="overlay"></div>
-      <div class="popupContent" id="popupContent">
-        <div class="commentBox">
-          <div class="comment">
-            <div class="username">Lukas_Der_Checker69</div>
-            <div class="reply">Was ein toller Post</div>
-          </div>
-          <div class="comment">
-            <div class="username">HornyHerrman</div>
-            <div class="reply">Hakuna Matata</div>
-          </div>
-        </div>
-        <div class="replyBox">
-          <div class="username">samuelematareso</div>
-          <input type="text" placeholder="Reply to Blog..." />
-        </div>
-
-        <div class="controls">
-          <button class="closeBtn">Close</button>
-          <button class="submitBtn">Submit</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="popup" id="createPopup">
-      <div class="overlay"></div>
-      <div class="popupContent" id="createPopupContent">
-        <div class="controls"><button class="closeBtn">Close</button></div>
-      </div>
+      <div class="popupContent" id="popupContent"></div>
     </div>
 
     <script src="/js/descriptionPopup.js"></script>
     <script src="/js/commentPopup.js"></script>
-    <script type="module" src="/js/profile.js"></script>
     <script src="/js/profilePopup.js"></script>
     <script src="/js/createPopup.js"></script>
+    <script type="module" src="/js/profile.js"></script>
     <script type="module" src="/js/postInteractions.js"></script>
     <script src="js/description.js"></script>
   </body>
