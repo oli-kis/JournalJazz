@@ -17,6 +17,8 @@ let isNumberCheck = document.getElementById("isNumber");
 let signUpSubmitBtn = document.getElementById("signUpButton");
 let signInSubmitBtn = document.getElementById("signInButton");
 
+let loginInputCheck = document.getElementById("logincheck");
+
 var jwt = sessionStorage.getItem("token");
 
 signUpButton.addEventListener("click", () => {
@@ -103,6 +105,7 @@ function Login() {
       console.log(data);
       if (data == "Username or Password is wrong (╯°□°）╯︵ ┻━┻") {
         jwt = null;
+        loginInputCheck.style.display = "block";
       } else {
         jwt = `Bearer ${data}`;
         sessionStorage.setItem("token", jwt);
