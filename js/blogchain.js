@@ -51,12 +51,10 @@ async function DisplayPosts() {
   })
     .then((response) => response.json())
     .then(async (json) => {
-      console.log(json);
       for (let x = 0; x < json.length; x++) {
         const element = json[x];
         let authorData = await GetAuthorData(element.authorId);
 
-        console.log(element);
         let post = document.createElement("div");
         post.classList.add("post");
         post.id = element.id;
@@ -97,6 +95,7 @@ async function DisplayPosts() {
         } else {
           let image = document.createElement("img");
           image.classList.add("caption");
+          image.loading = "lazy";
           image.src = "data:image/png;base64," + element.image;
           content.appendChild(image);
         }

@@ -69,36 +69,34 @@ function Register() {
       password: passwordInput.value,
     }),
   })
-  .then((response) => response.text())
-  .then((data) => {
-    if(data == "A User with this username already exists (╯°□°）╯︵ ┻━┻") {
-      document.getElementById("registrationcheck").style.display = "block";
-      signUpSubmitBtn.style.marginBottom = "2rem";
+    .then((response) => response.text())
+    .then((data) => {
+      if (data == "A User with this username already exists (╯°□°）╯︵ ┻━┻") {
+        document.getElementById("registrationcheck").style.display = "block";
+        signUpSubmitBtn.style.marginBottom = "2rem";
 
-      document.getElementById("emailInput").value = "";
-      document.getElementById("usernameInput").value = "";
-      passwordInput.value = "";
+        document.getElementById("emailInput").value = "";
+        document.getElementById("usernameInput").value = "";
+        passwordInput.value = "";
 
-      passwordCheck.style.display = "none";
-      signUpSubmitBtn.style.backgroundColor = "rgb(50, 50, 85)";
-      signUpSubmitBtn.disabled = true;
-    } else {
-      signInContainer.classList.remove("inactive");
-      signInForm.style.display = "flex";
-      signInButton.style.display = "none";
-      signUpButton.style.display = "block";
-      signUpForm.style.display = "none";
-      signUpContainer.style.borderRadius = "5% 200px 150px 5%";
-      signUpContainer.classList.add("inactive");
-    }
-  })
+        passwordCheck.style.display = "none";
+        signUpSubmitBtn.style.backgroundColor = "rgb(50, 50, 85)";
+        signUpSubmitBtn.disabled = true;
+      } else {
+        signInContainer.classList.remove("inactive");
+        signInForm.style.display = "flex";
+        signInButton.style.display = "none";
+        signUpButton.style.display = "block";
+        signUpForm.style.display = "none";
+        signUpContainer.style.borderRadius = "5% 200px 150px 5%";
+        signUpContainer.classList.add("inactive");
+      }
+    });
 }
 
 function Login() {
   let usernameInput = document.getElementById("usernameLoginInput").value;
   let passwordInput = document.getElementById("passwordLoginInput").value;
-
-  console.log("Login:" + usernameInput + passwordInput);
 
   fetch("https://blogchainapi.onrender.com/api/User/Login", {
     method: "POST",
@@ -113,7 +111,6 @@ function Login() {
   })
     .then((response) => response.text())
     .then((data) => {
-      console.log(data);
       if (data == "Username or Password is wrong (╯°□°）╯︵ ┻━┻") {
         jwt = null;
         loginInputCheck.style.display = "block";

@@ -59,7 +59,6 @@ function createPopup(id) {
       const file = image.files[0];
 
       formData.append("postData", file);
-      console.log(formData);
     }
 
     await fetch("https://blogchainapi.onrender.com/api/Post/CreateImagePost", {

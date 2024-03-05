@@ -47,7 +47,6 @@ async function GetOwn() {
 async function CreateBlogs(list, user) {
   const postContainer = document.getElementById("postsContainer");
   list = list.reverse();
-  console.log(list);
   for (let x = 0; x < list.length; x++) {
     const element = list[x];
     await fetch(
@@ -84,7 +83,6 @@ async function CreateBlogs(list, user) {
         time.innerHTML = publishedFinal;
 
         //Displays amount of people who liked the post
-        console.log(element);
         const likes = document.createElement("p");
         let heartAmount = element.likedBy.length;
         likes.textContent = heartAmount;
@@ -107,6 +105,8 @@ async function CreateBlogs(list, user) {
         } else {
           let image = document.createElement("img");
           image.classList.add("caption");
+          // Lazy Loading
+          image.loading = "lazy";
           image.src = "data:image/png;base64," + element.image;
           content.appendChild(image);
         }
@@ -135,7 +135,6 @@ async function CreateBlogs(list, user) {
           let commentBox = document.createElement("div");
           commentBox.classList.add("commentBox");
           element.comments.forEach((comment) => {
-            console.log(comment);
             let container = document.createElement("div");
             container.classList.add("comment");
             let username = document.createElement("div");
@@ -474,7 +473,6 @@ async function UserData() {
     },
   }).then((response) => response.json());
 
-  console.log(data);
   return data;
 }
 
