@@ -14,6 +14,7 @@
           Switch to Sign Up
         </button>
         <form id="signUpForm" onsubmit="Register(); return false;">
+          <h4 id="registrationcheck">Registrierung fehlgeschlagen...</h4>
           <h1>Sign Up</h1>
           <input id="emailInput" type="email" placeholder="Email" />
           <input id="usernameInput" type="text" placeholder="Username" />
@@ -46,7 +47,7 @@
           />
           <div class="passwordcheck" id="logincheck">
             <h6 style="color: red">
-              Es wurden falsche Einmeldedaten eingegeben...
+              Es wurden falsche Anmeldedaten eingegeben...
             </h6>
           </div>
           <button id="signInButton" type="submit">Sign In</button>

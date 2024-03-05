@@ -50,6 +50,11 @@ h1 {
   align-items: left;
   display: none;
 }
+#registrationcheck {
+  display: none;
+  margin-bottom: 1rem;
+  color: red;
+}
 form button {
   width: 60%;
   margin-top: 12px;
